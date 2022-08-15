@@ -32,14 +32,12 @@ class SeguimientoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'ot'=> 'required|unique:seguimientos,ot',
+            'ot'=> 'required',
             'vehiculo_id'=>'required',
             'servicio_id'=>'required',
             'hora_ingreso' => 'required',
             'img_inicial_1' => 'required',
-            'img_inicial_2' => 'required',
-            'img_inicial_3' => 'required',
-            'img_inicial_4' => 'required'
+            'img_inicial_2' => 'required'
         ]);
 
         $seguimiento = new Seguimiento();
@@ -59,18 +57,6 @@ class SeguimientoController extends Controller
             $photo = Str::random(10).".jpg";
             file_put_contents('storage/seguimientos/'.$photo,base64_decode($request->img_inicial_2));
             $seguimiento->img_inicial_2 = Storage::url('seguimientos/'.$photo);
-        }
-
-        if($request->img_inicial_3 != ''){
-            $photo = Str::random(10).".jpg";
-            file_put_contents('storage/seguimientos/'.$photo,base64_decode($request->img_inicial_3));
-            $seguimiento->img_inicial_3 = Storage::url('seguimientos/'.$photo);
-        }
-
-        if($request->img_inicial_4 != ''){
-            $photo = Str::random(10).".jpg";
-            file_put_contents('storage/seguimientos/'.$photo,base64_decode($request->img_inicial_4));
-            $seguimiento->img_inicial_4 = Storage::url('seguimientos/'.$photo);
         }
 
         $vehiculo = Vehiculo::find($request->vehiculo_id);

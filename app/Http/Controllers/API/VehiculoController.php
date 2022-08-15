@@ -32,8 +32,7 @@ class VehiculoController extends Controller
         $request->validate([
             'marca_id'=>'required',
             'modelo_id'=> 'required',
-            'numero_placa'=>'required|unique:vehiculos,numero_placa',
-            'cifra_vin' => 'required|unique:vehiculos,cifra_vin'
+            'numero_placa'=>'required'
             
         ]);
 

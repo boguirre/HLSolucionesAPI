@@ -32,8 +32,8 @@ class SeguimientoEspController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'ot'=> 'required|unique:seguimiento_especializados,ot',
-            'oc' => 'required|unique:seguimiento_especializados,oc',
+            'ot'=> 'required',
+            'oc' => 'required',
             'vehiculo_id'=>'required',
             'servicio_id'=>'required',
             'hora_ingreso' => 'required',
